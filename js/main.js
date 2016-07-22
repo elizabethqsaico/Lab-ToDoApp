@@ -1,8 +1,7 @@
 $(document).ready(initApp);
 
 function initApp() {
-	var tareaBtnAdd = document.getElementById("tareaBtnAdd");
-	tareaBtnAdd.addEventListener("click", addTarea);
+	$('#tareaBtnAdd').click(addTarea);
 }
 function addTarea(){
 	var tareaLista = document.getElementById("tareaLista");
@@ -17,7 +16,7 @@ function addTarea(){
 		tareaCheckbox.setAttribute("type", "checkbox");
 		tareaCheckbox.setAttribute("id", "tareaCheckbox");
 
-		tareaCheckbox.addEventListener("click", function(){
+		$(tareaCheckbox).on("click",function(){
 			if(tareaCheckbox.checked != true){
 				tareaDescripcion.classList.remove("line-through");
 				tareaDescripcion.classList.add("none");
@@ -25,9 +24,8 @@ function addTarea(){
 			else{
 				tareaDescripcion.classList.remove("none");
 				tareaDescripcion.classList.add("line-through");
-			}
-		});
-		
+			}			
+		})
 		var tareaDescripcion = document.createElement("p"); 
 		tareaDescripcion.setAttribute("class", "form-control");
 		tareaDescripcion.setAttribute("id", "tareaDescripcion");
@@ -49,7 +47,7 @@ function addTarea(){
 		tareaListaItem.appendChild(tareaDescripcion);
 		tareaListaItem.appendChild(spanBtnDelete);
 
-		spanBtnDelete.addEventListener("click", function(){
+		$(spanBtnDelete).on("click",function(){
 			tareaListaItem.parentNode.removeChild(tareaListaItem);
 		});
 	}
